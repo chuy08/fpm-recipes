@@ -1,4 +1,4 @@
-class Beanstalkd < FPM::Cookery::Recipe
+class Exiftool < FPM::Cookery::Recipe
   description 'A simple, fast work queue'
 
   name        'exiftool'
