@@ -9,11 +9,14 @@ class Conky < FPM::Cookery::Recipe
   description 'Conky for Ubuntu Bionic'
   md5         '3d609229a5c6e41cc43b47436562fe16'
 
-  #post_install   'post-install'
-  #post_uninstall 'post-uninstall'
+  build_depends 'libcurl4-openssl-dev'
+                'libimlib2-dev',
+                'liblua5.3-dev',
+                'ncurses-dev',
+                'xorg-dev'
 
   def build_dir 
-    FPM::Cookery::Path.new("build") 
+    FPM::Cookery::Path.new("build")
   end
 
   def before_build
@@ -34,4 +37,3 @@ class Conky < FPM::Cookery::Recipe
     end
   end
 end
-

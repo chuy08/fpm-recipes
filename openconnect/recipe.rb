@@ -8,23 +8,17 @@ class Openconncet < FPM::Cookery::Recipe
   source      "https://gitlab.com/openconnect/openconnect/-/archive/v8.10/openconnect-v#{version}.zip"
   md5         '41f985bb6423deee8b25d5ed2c5b8a23'
 
-  #post_install   'post-install'
-  #post_uninstall 'post-uninstall'
-
-  def build_dir 
-    FPM::Cookery::Path.new("build") 
-  end
-
-  def before_build
-    #safesystem "cp #{workdir}/vpnc-script #{builddir}/v#{version}"
-    #safesystem "mv #{builddir}/v#{version}/openconnect-v#{version} #{builddir}/openconnect-v#{version}"
-    #build_dir.mkdir
-  end
+  build_depends 'automake',
+                'gettext',
+                'liblz4-dev',
+                'libssl-dev',
+                'libtool',
+                'libxml2-dev'
 
   def build
     chdir "#{builddir}/openconnect-v#{version}/openconnect-v#{version}" do
-       safesystem "./autogen.sh --with-vpnc-script=/etc/vpnc/vpnc-script"
-       safesystem "./configure --libdir=/usr/local"
+       safesystem "./autogen.sh"
+       safesystem "./configure --libdir=/usr/local --with-vpnc-script=/etc/vpnc/vpnc-script"
        make
     end
   end
@@ -33,5 +27,7 @@ class Openconncet < FPM::Cookery::Recipe
      chdir "#{builddir}/openconnect-v#{version}/openconnect-v#{version}" do
         make :install, 'DESTDIR' => destdir
      end
+     # http://git.infradead.org/users/dwmw2/vpnc-scripts.git/blob_plain/HEAD:/vpnc-script
+     etc('vpnc').install_p(workdir('vpnc-script'), 'vpnc-script')
   end
 end

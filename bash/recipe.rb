@@ -9,9 +9,6 @@ class Bash51 < FPM::Cookery::Recipe
   description 'Bash 5 for Ubuntu Bionic'
   md5         'bb91a17fd6c9032c26d0b2b78b50aff5'
 
-  #post_install   'post-install'
-  #post_uninstall 'post-uninstall'
-
   def build
     configure
     make
