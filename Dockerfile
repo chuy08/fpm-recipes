@@ -9,9 +9,5 @@ RUN apt-get -y install \
    ruby-dev \
    rubygems
 
-#RUN apt-get -y install \
-
-
-
 RUN gem install --no-document fpm fpm-cookery
 RUN rm -rf /var/cache/apt/archives
