@@ -4,6 +4,7 @@ class Exiftool < FPM::Cookery::Recipe
   name        'exiftool'
   version     '12.13'
   revision    '1'
+  maintainer  'Jesus Orosco <chuy08@gmail.com>'
   homepage    'https://exiftool.org' 
   source      "https://exiftool.org/Image-ExifTool-#{version}.tar.gz"
   description 'Read, Write and Edit Meta Information!'

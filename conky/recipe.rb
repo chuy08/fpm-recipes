@@ -4,6 +4,7 @@ class Conky < FPM::Cookery::Recipe
   name        'conky'
   version     '1.12.2'
   revision    '1'
+  maintainer  'Jesus Orosco <chuy08@gmail.com>'
   homepage    'https://github.com/brndnmtthws/conky' 
   source      "https://github.com/brndnmtthws/conky/archive/refs/tags/v#{version}.zip"
   description 'Conky for Ubuntu Bionic'
