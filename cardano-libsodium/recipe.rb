@@ -3,7 +3,7 @@ class CardanoLibSodium < FPM::Cookery::Recipe
 
   name        'cardano-libsodium'
   version     '1.0.16'
-  revision    '3'
+  revision    '4'
   maintainer  'chuy08 <chuy08@gmail.com>'
   homepage    'https://github.com/input-output-hk/libsodium'
   source      "https://github.com/input-output-hk/libsodium.git",
@@ -11,6 +11,7 @@ class CardanoLibSodium < FPM::Cookery::Recipe
                  :sha  => "004952bb57b2a6d2c033969820c80255e8362615"
 
   build_depends 'libtool'
+  post_install  'post-install.bash'
 
   def build
     safesystem "./autogen.sh"

@@ -24,7 +24,7 @@ class CardanoNode < FPM::Cookery::Recipe
   def before_build
     safesystem "dpkg -i #{workdir}/cardano-cabal_$CABAL_VERSION-1_amd64.deb"\
                " #{workdir}/cardano-ghc_$GHC_VERSION-1_amd64.deb"\
-               " #{workdir}/cardano-libsodium_$LIBSODIUM_VERSION-3_amd64.deb"
+               " #{workdir}/cardano-libsodium_$LIBSODIUM_VERSION-4_amd64.deb"
 
     safesystem "cabal update"
     safesystem "cabal --version"
@@ -32,7 +32,6 @@ class CardanoNode < FPM::Cookery::Recipe
   end
 
   def build
-    safesystem "ldconfig"
     safesystem "ldconfig -p | grep sodium"
     safesystem "strings /usr/local/lib/lib/libsodium.so.23 | grep vrf"
     safesystem "cabal configure --with-compiler=/usr/local/bin/ghc"
