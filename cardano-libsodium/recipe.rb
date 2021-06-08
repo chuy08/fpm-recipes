@@ -4,7 +4,7 @@ class CardanoLibSodium < FPM::Cookery::Recipe
   name        'cardano-libsodium'
   version     '1.0.16'
   revision    '3'
-  maintainer  'Jesus Orosco <chuy08@gmail.com>'
+  maintainer  'chuy08 <chuy08@gmail.com>'
   homepage    'https://github.com/input-output-hk/libsodium'
   source      "https://github.com/input-output-hk/libsodium.git",
                  :with => :git,

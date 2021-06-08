@@ -4,7 +4,7 @@ class Openconncet < FPM::Cookery::Recipe
   name        'openconnect'
   version     '8.10'
   revision    '1'
-  maintainer  'Jesus Orosco <chuy08@gmail.com>'
+  maintainer  'chuy08 <chuy08@gmail.com>'
   homepage    'https://gitlab.com/openconnect/openconnect'
   source      "https://gitlab.com/openconnect/openconnect/-/archive/v8.10/openconnect-v#{version}.zip"
   md5         '41f985bb6423deee8b25d5ed2c5b8a23'

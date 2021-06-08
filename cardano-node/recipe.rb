@@ -4,7 +4,7 @@ class CardanoNode < FPM::Cookery::Recipe
   name        'cardano-node'
   version     '1.27.0'
   revision    '1'
-  maintainer  'Jesus Orosco <chuy08@gmail.com>'
+  maintainer  'chuy08 <chuy08@gmail.com>'
   homepage    'https://cardano.org/'
   source      "https://github.com/input-output-hk/cardano-node.git",
                   :with => :git,
@@ -20,9 +20,6 @@ class CardanoNode < FPM::Cookery::Recipe
                 'libtinfo5',
                 'pkg-config',
                 'zlib1g-dev'
-
-  #libffi-dev libgmp-dev libssl-dev libtinfo-dev libsystemd-dev zlib1g-dev make g++ tmux git jq wget libncursesw5 libtool autoconf
-
 
   def before_build
     safesystem "dpkg -i #{workdir}/cardano-cabal_$CABAL_VERSION-1_amd64.deb"\
@@ -43,7 +40,8 @@ class CardanoNode < FPM::Cookery::Recipe
   end
 
   def install
-    bin.install "#{workdir}/dist-newstyle/build/x86_64-linux/ghc-$GHC_VERSION/cardano-cli-#{version}/x/cardano-cli/build/cardano-cli/cardano-cli"
-    bin.install "#{workdir}/dist-newstyle/build/x86_64-linux/ghc-$GHC_VERSION/cardano-node-#{version}/x/cardano-node/build/cardano-node/cardano-node"
+    safesystem "pwd"
+    bin.install "#{builddir}/#{name}-tag-#{version}/dist-newstyle/build/x86_64-linux/ghc-8.10.5/cardano-cli-#{version}/x/cardano-cli/build/cardano-cli/cardano-cli"
+    bin.install "#{builddir}/#{name}-tag-#{version}/dist-newstyle/build/x86_64-linux/ghc-8.10.5/cardano-node-#{version}/x/cardano-node/build/cardano-node/cardano-node"
   end
 end

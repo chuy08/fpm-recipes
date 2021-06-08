@@ -4,7 +4,7 @@ class Ruby23 < FPM::Cookery::Recipe
   name        'ruby23'
   version     '2.3.8'
   revision    '1'
-  maintainer  'Jesus Orosco <chuy08@gmail.com>'
+  maintainer  'chuy08 <chuy08@gmail.com>'
   homepage    'https://www.ruby-lang.org/' 
   source      "https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.8.zip"
   description 'Ruby 2.3.8 for Centos7'
@@ -27,4 +27,3 @@ class Ruby23 < FPM::Cookery::Recipe
     make :install, 'DESTDIR' => destdir
   end
 end
-
