@@ -15,6 +15,8 @@ class CardanoNode < FPM::Cookery::Recipe
   ENV["LIBSODIUM_VERSION"] = "1.0.16"
   ENV["PKG_CONFIG_PATH"] = "/usr/local/lib/pkgconfig"
 
+  depends       'libtool'
+
   build_depends 'automake',
                 'libsystemd-dev',
                 'libtinfo5',
@@ -33,13 +35,13 @@ class CardanoNode < FPM::Cookery::Recipe
 
   def build
     safesystem "ldconfig -p | grep sodium"
-    safesystem "strings /usr/local/lib/lib/libsodium.so.23 | grep vrf"
+    safesystem "strings /usr/local/lib/libsodium.so.23 | grep vrf"
+    safesystem "echo  \"package cardano-crypto-praos\n flags: -external-libsodium-vrf\" >> #{builddir}/#{name}-tag-#{version}/cabal.project.local"
     safesystem "cabal configure --with-compiler=/usr/local/bin/ghc"
-    safesystem "cabal build all"
+    safesystem "cabal build cardano-node cardano-cli"
   end
 
   def install
-    safesystem "pwd"
     bin.install "#{builddir}/#{name}-tag-#{version}/dist-newstyle/build/x86_64-linux/ghc-8.10.5/cardano-cli-#{version}/x/cardano-cli/build/cardano-cli/cardano-cli"
     bin.install "#{builddir}/#{name}-tag-#{version}/dist-newstyle/build/x86_64-linux/ghc-8.10.5/cardano-node-#{version}/x/cardano-node/build/cardano-node/cardano-node"
   end
