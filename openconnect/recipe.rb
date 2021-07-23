@@ -14,7 +14,9 @@ class Openconncet < FPM::Cookery::Recipe
                 'liblz4-dev',
                 'libssl-dev',
                 'libtool',
-                'libxml2-dev'
+                'libxml2-dev',
+                'pkg-config',
+                'zlib1g-dev'
 
   def build
     chdir "#{builddir}/openconnect-v#{version}/openconnect-v#{version}" do
