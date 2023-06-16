@@ -2,12 +2,12 @@ class Openconncet < FPM::Cookery::Recipe
   description 'Openconnect SSL VPN Client for Cisco Anyconnect'
 
   name        'openconnect'
-  version     '8.10'
+  version     '9.12'
   revision    '1'
   maintainer  'chuy08 <chuy08@gmail.com>'
   homepage    'https://gitlab.com/openconnect/openconnect'
-  source      "https://gitlab.com/openconnect/openconnect/-/archive/v8.10/openconnect-v#{version}.zip"
-  md5         '41f985bb6423deee8b25d5ed2c5b8a23'
+  source      "https://gitlab.com/openconnect/openconnect/-/archive/v#{version}/openconnect-v#{version}.zip"
+  md5         '643f566480764f53bfcc9665edb8f2e1'
 
   build_depends 'automake',
                 'gettext',

@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:jammy
 
 RUN apt-get update
 RUN apt-get -y install \
@@ -9,8 +9,8 @@ RUN apt-get -y install \
    ruby-dev \
    rubygems
 
-COPY fpm-cookery-0.35.2.gem /fpm-cookery-0.35.2.gem 
-RUN gem install --no-document fpm ./fpm-cookery-0.35.2.gem
-RUN rm -rf /fpm-cookery-0.35.2.gem
+#COPY fpm-cookery-0.35.2.gem /fpm-cookery-0.35.2.gem 
+RUN gem install --no-document fpm-cookery
+#RUN rm -rf /fpm-cookery-0.35.2.gem
 RUN rm -rf /var/cache/apt/archives
 
